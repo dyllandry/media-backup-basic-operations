@@ -61,6 +61,7 @@ export async function seedMediaCount() {
       },
     })
     .send();
+  return getMediaCount();
 }
 
 export async function getMediaCount() {
@@ -69,6 +70,6 @@ export async function getMediaCount() {
     .key({ pk: "mediaCount", sk: "info" })
     .send();
   const mediaCount = response.Item;
-  assert(mediaCount, "Cannot get media count, the media count is missing.");
+  assert(mediaCount, "Cannot get media count, media count does not exist.");
   return response.Item;
 }

@@ -1,9 +1,5 @@
-import { GetItemCommand, PutItemCommand } from "dynamodb-toolbox";
-import {
-  getMediaCount,
-  mediaCountEntity,
-  seedMediaCount,
-} from "./db/entities/media-count";
+import { seedMediaCount } from "./db/entities/media-count";
+import { seedMedia } from "./db/entities/media";
 
 main()
   .then(() => {
@@ -15,16 +11,15 @@ main()
   });
 
 async function main() {
-  const seedTestData = async () => {
-    console.log("Seeding test data...");
-    // TODO: seed photos
-    // TODO: seed album
-    await seedMediaCount();
-    console.log("Seeding done.");
-  };
-
-  await seedTestData();
-
-  const mediaCount = await getMediaCount();
+  const { media, mediaCount } = await seedTestData();
   console.log(mediaCount);
+  console.log(media);
+}
+
+async function seedTestData() {
+  console.log("Seeding test data...");
+  const mediaCount = await seedMediaCount();
+  const media = await seedMedia();
+  console.log("Seeding done.");
+  return { mediaCount, media };
 }
