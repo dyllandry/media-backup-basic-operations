@@ -23,7 +23,7 @@ async function main() {
     console.log("Seeding done.");
   };
 
-  // await seedTestData();
+  await seedTestData();
 
   const mediaCount = await getMediaCount();
   console.log(mediaCount);

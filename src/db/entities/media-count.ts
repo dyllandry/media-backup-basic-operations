@@ -10,8 +10,8 @@ export const mediaCountEntity = new Entity({
   name: "mediaCount",
   table: mediaTable,
   schema: schema({
-    PK: string().key().default("mediaCount"),
-    SK: string().key().default("info"),
+    pk: string().key().default("mediaCount"),
+    sk: string().key().default("info"),
     data: record(
       string().validate((year) => {
         const typeofYear = typeof year;
@@ -66,7 +66,7 @@ export async function seedMediaCount() {
 export async function getMediaCount() {
   const response = await mediaCountEntity
     .build(GetItemCommand)
-    .key({ PK: "mediaCount", SK: "info" })
+    .key({ pk: "mediaCount", sk: "info" })
     .send();
   const mediaCount = response.Item;
   assert(mediaCount, "Cannot get media count, the media count is missing.");

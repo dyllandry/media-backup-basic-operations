@@ -5,44 +5,44 @@ export const mediaTable = new Table({
   documentClient,
   name: "mediaBackup",
   partitionKey: {
-    name: "PK",
+    name: "pk",
     type: "string",
   },
   sortKey: {
-    name: "SK",
+    name: "sk",
     type: "string",
   },
   indexes: {
-    yearMonthPK: {
+    yearMonthPk: {
       type: "global",
       partitionKey: {
         name: "yearMonth",
         type: "string",
       },
       sortKey: {
-        name: "PK",
+        name: "pk",
         type: "string",
       },
     },
-    isFavouritePK: {
+    isFavouritePk: {
       type: "global",
       partitionKey: {
         name: "isFavourite",
         type: "string",
       },
       sortKey: {
-        name: "PK",
+        name: "pk",
         type: "string",
       },
     },
-    isAlbumPK: {
+    isAlbumPk: {
       type: "global",
       partitionKey: {
         name: "isAlbum",
         type: "string",
       },
       sortKey: {
-        name: "PK",
+        name: "pk",
         type: "string",
       },
     },
